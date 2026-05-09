@@ -48,8 +48,8 @@ broker (at-least-once delivery, retry-on-failure, multi-worker safety).
 +---------------+                                          |   (Postgres)       |
                                                            +-------------------+
                                                                     |
-                                                  claim_vote_messages RPC
-                                                  (FOR UPDATE SKIP LOCKED)
+                                                          claim_vote_messages RPC
+                                                          (FOR UPDATE SKIP LOCKED)
                                                                     |
                                                                     v
                                                            +-------------------+
@@ -57,7 +57,7 @@ broker (at-least-once delivery, retry-on-failure, multi-worker safety).
                                                            |  (Python loop)    |
                                                            +-------------------+
                                                                     |
-                                                              UPSERT (idempotent)
+                                                            UPSERT (idempotent)
                                                                     |
                                                                     v
                                                            +-------------------+
@@ -78,7 +78,7 @@ broker (at-least-once delivery, retry-on-failure, multi-worker safety).
 ### 1.4 Deployed API Endpoint
 
 ```text
-https://YOUR-APP-NAME.onrender.com
+https://cs323-voting-system-2.onrender.com/
 ```
 
 Health check: `GET /` returns `{"status": "ok", "service": "voting-api"}`
@@ -130,7 +130,7 @@ voting-system/
 ### 3.3 Configure local environment
 
 ```bash
-git clone https://github.com/YOUR_GROUP/voting-system.git
+git clone https://github.com/SuiSensei/cs323-voting-system.git
 cd voting-system
 
 # Copy the template and fill in real values
@@ -143,7 +143,7 @@ Edit `.env`:
 ```env
 SUPABASE_URL=https://yourproject.supabase.co
 SUPABASE_SERVICE_KEY=your-service-role-key
-API_URL=http://localhost:8000/vote
+API_URL= https://cs323-voting-system-2.onrender.com/
 ```
 
 ### 3.4 Install dependencies
@@ -198,7 +198,7 @@ So group members on different machines can share one API:
 5. After deployment, copy the public URL and update each member's `.env`:
 
    ```env
-   API_URL=https://your-app.onrender.com/vote
+   API_URL=https://cs323-voting-system-2.onrender.com/
    ```
 
 Each member can now run `edge_node.py` from their own laptop — true distributed edges.
@@ -277,22 +277,11 @@ SELECT
 A short demonstration video showing the full pipeline (edge → API → queue → worker
 → database, plus fault injection and recovery) is included in this repository:
 
-`demo/demo.mp4` — or — `demo/demo.gif`
+[Demo Video](https://drive.google.com/file/d/1vRF6G8hPKpZeeH9FZ60dPPcx8Ud8bku9/view?usp=drive_link)
 
 ---
 
 ## 5. Individual Reflections
-
-> Each member writes their own reflection in paragraph form, grounded in what they
-> actually observed during implementation and testing. Focus on real outcomes from
-> the edge nodes, API, queue, worker, and database — not textbook definitions.
-> Suggested aspects to touch on (not all required):
->
-> - Differences between sequential vs. distributed execution
-> - System behavior as vote volume increases (latency, queue buildup, throughput)
-> - Implementation challenges (Supabase setup, integration, async debugging)
-> - Insights about communication overhead, buffering, eventual consistency
-> - Where distribution helped, and where it added complexity
 
 ### 5.1 Member 1 — Jhey Gulde
 
