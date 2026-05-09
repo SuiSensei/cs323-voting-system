@@ -318,6 +318,10 @@ The most memorable part was during testing when we intentionally shut down one p
 
 ### 5.5 Member 5 - John Carl Ramirez
 
+To avoid Google Cloud billing requirements, we rebuilt our lab infrastructure using FastAPI and Supabase on Render, effectively replacing Cloud Run, Pub/Sub, and Firestore with alternative asynchronous components. The biggest hurdle was shifting from sequential, blocking logic to decoupled architecture. Because the edge node, API, and worker operated independently, debugging silent worker failures turned into forensic work of hunting through server logs and SQL queries rather than traditional code tracing.
+
+Despite these operational challenges, our load tests provided a clear picture of distributed behavior. Pushing high traffic revealed that the worker's polling rate was the main bottleneck, as the API remained perfectly responsive while the queue backlog swelled. The architecture's value truly clicked during the worker-failure test: the system didn't crash, the queue safely buffered incoming requests, and the worker seamlessly processed the backlog upon restart, while idempotency keys prevented duplicate data. Ultimately, while the network overhead made this setup slower than a basic monolithic script, I learned that the true goal of distributed architecture isn't raw speed—it's fault tolerance and resilience against component failure.
+
 ---
 
 ## 6. Trade-offs Observed
