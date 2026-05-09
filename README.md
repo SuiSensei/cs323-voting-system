@@ -311,9 +311,12 @@ Working on this project taught us a lot about teamwork and problem-solving. Earl
 
 Everything finally clicked when we tested the app. When we purposely turned off a "worker" part of our system, the whole app didn't crash. It kept happily accepting new votes and simply held them in a waiting line. As soon as we turned the worker back on, it automatically processed all those waiting votes without us doing any extra work. Overall, we learned a huge lesson. Building an app in separate pieces isn't necessarily about making it run faster. The real goal for us is to make the system resilient so that if one piece breaks, the entire application doesn't fall apart. Figuring out these complex moving parts with my team really brought the core concepts of Parallel and Distributed Computing out of the textbook and into reality.
 
-### 5.4 Member 4 — _Full Name_
+### 5.4 Member 4 — Gerlie Campion
 
-_Your reflection here..._
+This project taught us a lot about teamwork, patience, and solving problems together. One of the biggest challenges was learning how distributed systems work because, unlike regular coding, processes don’t always happen in order. There were moments when the system seemed fine, but some votes were not being processed, so we had to carefully check the logs to find the issue.
+The most memorable part was during testing when we intentionally shut down one part of the system, expecting everything to stop. Instead, the app kept accepting votes, and once we restarted the service, all pending votes were processed automatically. That experience helped us realize that distributed computing is not just about speed, but about building a system that stays reliable even when one part fails.
+
+### 5.5 Member 5 - John Carl Ramirez
 
 ---
 
