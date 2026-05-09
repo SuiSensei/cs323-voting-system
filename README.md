@@ -1,9 +1,12 @@
 # Distributed Voting System with Edge–Cloud Architecture and Fault Tolerance
 
-**Course:** CS323 — Distributed Computing
-**Lab Activity:** Second Laboratory (Final)
-**Group:** Group X
-**Members:** Member 1, Member 2, Member 3, Member 4
+**Course:** CS323 — Parallel and Distributed Computing
+
+**Lab Activity:** Second Group Laboratory (Final)
+
+**Group:** CodeBridge
+
+**Members:** Gerlie Campion, Francis Adrian Esteban, Jhey Gulde, Kathleen Grace Gultiano, John Carl Ramirez
 
 ---
 
@@ -44,8 +47,8 @@ broker (at-least-once delivery, retry-on-failure, multi-worker safety).
 |  Edge Node 2  |  ---------------> |                 |             |
 +---------------+                   +-----------------+             v
 +---------------+                                          +-------------------+
-|  Edge Node N  |  ----------------------------------->    |   vote_queue       |
-+---------------+                                          |   (Postgres)       |
+|  Edge Node N  |  ----------------------------------->    |   vote_queue      |
++---------------+                                          |   (Postgres)      |
                                                            +-------------------+
                                                                     |
                                                           claim_vote_messages RPC
@@ -305,7 +308,7 @@ Everything finally clicked when we tested the app. When we purposely turned off 
 This project taught us a lot about teamwork, patience, and solving problems together. One of the biggest challenges was learning how distributed systems work because, unlike regular coding, processes don’t always happen in order. There were moments when the system seemed fine, but some votes were not being processed, so we had to carefully check the logs to find the issue.
 The most memorable part was during testing when we intentionally shut down one part of the system, expecting everything to stop. Instead, the app kept accepting votes, and once we restarted the service, all pending votes were processed automatically. That experience helped us realize that distributed computing is not just about speed, but about building a system that stays reliable even when one part fails.
 
-### 5.5 Member 5 - John Carl Ramirez
+### 5.5 Member 5 — John Carl Ramirez
 
 To avoid Google Cloud billing requirements, we rebuilt our lab infrastructure using FastAPI and Supabase on Render, effectively replacing Cloud Run, Pub/Sub, and Firestore with alternative asynchronous components. The biggest hurdle was shifting from sequential, blocking logic to decoupled architecture. Because the edge node, API, and worker operated independently, debugging silent worker failures turned into forensic work of hunting through server logs and SQL queries rather than traditional code tracing.
 
