@@ -305,9 +305,11 @@ One of the biggest challenges we faced was understanding how distributed systems
 
 The most memorable experience occurred during testing, when we intentionally shut down a part of the system, assuming that the entire application would stop functioning. Instead, the system continued accepting votes without interruption, and once the service was restored, all queued votes were processed automatically. This unexpected result highlighted the true strength of distributed systems. It taught us that distributed computing is not only about efficiency or speed, but about designing resilient systems that can continue operating reliably even when individual components fail.
 
-### 5.3 Member 3 — _Full Name_
+### 5.3 Member 3 — Kathleen Grace Gultiano
 
-_Your reflection here..._
+Working on this project taught us a lot about teamwork and problem-solving. Early on, we had an issue because Google Cloud wanted a credit card for us to pay upfront. But, as we all know, every problem has a solution, so instead of giving up, we worked together to rebuild our voting system using free tools like Supabase and FastAPI with the help and suggestions of our instructor. I think the hardest part for me was getting used to how these systems work. In normal coding, steps happen one after the other. But here, different parts of the system ran on their own time without waiting for each other. It was tricky to fix bugs because when something failed, the system didn't give us a clear error, we had to dig through logs like detectives to find where the votes were getting stuck.
+
+Everything finally clicked when we tested the app. When we purposely turned off a "worker" part of our system, the whole app didn't crash. It kept happily accepting new votes and simply held them in a waiting line. As soon as we turned the worker back on, it automatically processed all those waiting votes without us doing any extra work. Overall, we learned a huge lesson. Building an app in separate pieces isn't necessarily about making it run faster. The real goal for us is to make the system resilient so that if one piece breaks, the entire application doesn't fall apart. Figuring out these complex moving parts with my team really brought the core concepts of Parallel and Distributed Computing out of the textbook and into reality.
 
 ### 5.4 Member 4 — _Full Name_
 
