@@ -37,15 +37,15 @@ broker (at-least-once delivery, retry-on-failure, multi-worker safety).
 ### 1.2 Architecture Diagram
 
 ```text
-+---------------+     HTTP POST      +-----------------+
++---------------+     HTTP POST     +-----------------+
 |  Edge Node 1  |  ---------------> |                 |
-+---------------+                    |    FastAPI      |     INSERT
-+---------------+                    |  (on Render)    |  -----------+
++---------------+                   |    FastAPI      |     INSERT
++---------------+                   |  (on Render)    |  -----------+
 |  Edge Node 2  |  ---------------> |                 |             |
-+---------------+                    +-----------------+             v
++---------------+                   +-----------------+             v
 +---------------+                                          +-------------------+
-|  Edge Node N  |  ----------------------------------->   |   vote_queue      |
-+---------------+                                          |   (Postgres)      |
+|  Edge Node N  |  ----------------------------------->    |   vote_queue       |
++---------------+                                          |   (Postgres)       |
                                                            +-------------------+
                                                                     |
                                                   claim_vote_messages RPC
