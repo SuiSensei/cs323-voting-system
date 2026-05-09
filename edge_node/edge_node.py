@@ -47,7 +47,7 @@ def run_edge_node():
         vote = generate_vote()
         send_vote(vote)
         # Uncomment to simulate duplicate transmission (Part 5 Step 1):
-        #send_vote(vote)
+        send_vote(vote)
         time.sleep(random.uniform(1, 3))
 
 if __name__ == "__main__":
